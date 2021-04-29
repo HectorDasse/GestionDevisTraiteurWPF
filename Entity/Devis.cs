@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gestion_Devis_Traiteur.Entity
+namespace GestionDevisTraiteurWPF.Entity
 {
 	class Devis
 	{
 		[Key]
 		public int id { get; set; }
-		public String nom { get; set; }
+		public string nom { get; set; }
 		public double prixHtSansMarge { get; set; }
 		public double prixHtAvecMarge { get; set; }
 		public double coefficientMarge { get; set; }

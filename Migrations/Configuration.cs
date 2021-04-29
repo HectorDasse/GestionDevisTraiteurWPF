@@ -1,4 +1,4 @@
-﻿namespace WpfApp2.Migrations
+﻿namespace GestionDevisTraiteurWPF.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -10,6 +10,8 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            // register mysql code generator
+            SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
         }
 
         protected override void Seed(Gestion_Devis_Traiteur.MyDbContext context)

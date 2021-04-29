@@ -1,4 +1,4 @@
-﻿namespace WpfApp2.Migrations
+﻿namespace GestionDevisTraiteurWPF.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -12,9 +12,9 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        nom = c.String(),
-                        prenom = c.String(),
-                        adresse = c.String(),
+                        nom = c.String(unicode: false),
+                        prenom = c.String(unicode: false),
+                        adresse = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -23,14 +23,14 @@
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
-                        nom = c.String(),
+                        nom = c.String(unicode: false),
                         prixHtSansMarge = c.Double(nullable: false),
                         prixHtAvecMarge = c.Double(nullable: false),
                         coefficientMarge = c.Double(nullable: false),
                         nombrePersonne = c.Int(nullable: false),
                         nombreCuisinier = c.Int(nullable: false),
                         nombreServeur = c.Int(nullable: false),
-                        tempsTravail = c.DateTime(nullable: false),
+                        tempsTravail = c.DateTime(nullable: false, precision: 0),
                     })
                 .PrimaryKey(t => t.id);
             
@@ -53,7 +53,7 @@
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
-                        nom = c.String(),
+                        nom = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.id);
             
@@ -62,8 +62,8 @@
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
-                        nom = c.String(),
-                        unite = c.String(),
+                        nom = c.String(unicode: false),
+                        unite = c.String(unicode: false),
                         prix = c.Double(nullable: false),
                         Famille_id = c.Int(),
                     })

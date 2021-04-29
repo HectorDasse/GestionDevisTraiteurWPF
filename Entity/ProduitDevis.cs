@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gestion_Devis_Traiteur.Entity
+namespace GestionDevisTraiteurWPF.Entity
 {
-	class ProduitDevis 
+	class ProduitDevis
 	{
 		[Key]
 		public int id { get; set; }

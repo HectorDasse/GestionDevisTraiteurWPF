@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gestion_Devis_Traiteur.Entity
+namespace GestionDevisTraiteurWPF.Entity
 {
 	class Produit
 	{
 		[Key]
 		public int id { get; set; }
-		public String nom { get; set; }
-		public String unite { get; set; }
+		public string nom { get; set; }
+		public string unite { get; set; }
 		public double prix { get; set; }
 
 

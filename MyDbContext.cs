@@ -1,4 +1,4 @@
-﻿using Gestion_Devis_Traiteur.Entity;
+﻿using GestionDevisTraiteurWPF.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

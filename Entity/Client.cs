@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gestion_Devis_Traiteur.Entity
+namespace GestionDevisTraiteurWPF.Entity
 {
 	class Client
 	{
 		[Key]
 		public int Id { get; set; }
 
-		public String nom { get; set; }
-		public String prenom { get; set; }
-		public String adresse { get; set; }
+		public string nom { get; set; }
+		public string prenom { get; set; }
+		public string adresse { get; set; }
 	}
 }
