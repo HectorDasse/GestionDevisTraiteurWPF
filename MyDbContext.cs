@@ -19,5 +19,7 @@ namespace Gestion_Devis_Traiteur
 		public DbSet<Devis> devis { get; set; }
 
 		public DbSet<ProduitDevis> produitDevis { get; set; }
+
+		public DbSet<SousProduit> sousProduits { get; set; }
 	}
 }

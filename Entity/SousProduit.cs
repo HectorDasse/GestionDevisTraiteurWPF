@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 
 namespace GestionDevisTraiteurWPF.Entity
 {
-	class Produit
+	public class SousProduit
 	{
 		[Key]
 		public int id { get; set; }
 		public string nom { get; set; }
-		public string unite { get; set; }
-		public double prix { get; set; }
-		public DateTime DateMiseAJour { get; set; }
-		public List<SousProduit> sousProduits { get; set; }
 	}
 }

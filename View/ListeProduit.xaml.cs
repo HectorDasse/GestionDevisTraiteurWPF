@@ -1,8 +1,6 @@
-﻿using Gestion_Devis_Traiteur;
-using GestionDevisTraiteurWPF.Dto;
+﻿using GestionDevisTraiteurWPF.Dto;
 using GestionDevisTraiteurWPF.Manager;
 using GestionDevisTraiteurWPF.Service;
-using GestionDevisTraiteurWPF.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,22 +13,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GestionDevisTraiteurWPF
+namespace GestionDevisTraiteurWPF.View
 {
 	/// <summary>
-	/// Logique d'interaction pour MainWindow.xaml
+	/// Logique d'interaction pour ListeProduit.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class ListeProduit : Window
 	{
-		public MainWindow()
+		readonly ServiceProduit serviceProduit = new ServiceProduit();
+
+		public ListeProduit()
 		{
 			InitializeComponent();
 
-			ListeProduit fenetre = new ListeProduit();
-			fenetre.Show();
+			List<ProduitDto> produitDtos = serviceProduit.getAll();
+
+			Produits.ItemsSource = produitDtos;
 		}
 	}
 }

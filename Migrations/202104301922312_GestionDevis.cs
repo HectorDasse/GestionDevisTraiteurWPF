@@ -65,20 +65,36 @@
                         nom = c.String(unicode: false),
                         unite = c.String(unicode: false),
                         prix = c.Double(nullable: false),
+                        DateMiseAJour = c.DateTime(nullable: false, precision: 0),
                         Famille_id = c.Int(),
                     })
                 .PrimaryKey(t => t.id)
                 .ForeignKey("dbo.Familles", t => t.Famille_id)
                 .Index(t => t.Famille_id);
             
+            CreateTable(
+                "dbo.SousProduits",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        nom = c.String(unicode: false),
+                        Produit_id = c.Int(),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.Produits", t => t.Produit_id)
+                .Index(t => t.Produit_id);
+            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Produits", "Famille_id", "dbo.Familles");
+            DropForeignKey("dbo.SousProduits", "Produit_id", "dbo.Produits");
             DropForeignKey("dbo.ProduitDevis", "Devis_id", "dbo.Devis");
+            DropIndex("dbo.SousProduits", new[] { "Produit_id" });
             DropIndex("dbo.Produits", new[] { "Famille_id" });
             DropIndex("dbo.ProduitDevis", new[] { "Devis_id" });
+            DropTable("dbo.SousProduits");
             DropTable("dbo.Produits");
             DropTable("dbo.Familles");
             DropTable("dbo.ProduitDevis");
