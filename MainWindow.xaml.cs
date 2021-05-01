@@ -31,6 +31,7 @@ namespace GestionDevisTraiteurWPF
 
 			ListeProduit fenetre = new ListeProduit();
 			fenetre.Show();
+			this.Close();
 		}
 	}
 }

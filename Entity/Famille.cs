@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace GestionDevisTraiteurWPF.Entity
 {
-	class Famille
+	public class Famille
 	{
 		[Key]
 		public int id { get; set; }
 		public string nom { get; set; }
-
-		public List<Produit> Produits { get; set; }
 	}
 }

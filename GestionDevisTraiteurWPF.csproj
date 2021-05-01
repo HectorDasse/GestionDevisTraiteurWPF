@@ -123,16 +123,23 @@
     <Compile Include="Dto\FamilleDto.cs" />
     <Compile Include="Dto\ProduitDto.cs" />
     <Compile Include="Dto\EntityDto.cs" />
+    <Compile Include="Dto\SousProduitDto.cs" />
     <Compile Include="Entity\SousProduit.cs" />
     <Compile Include="Manager\IActionManager.cs" />
     <Compile Include="Manager\IProduitManager.cs" />
+    <Compile Include="Manager\ISousProduitManager.cs" />
     <Compile Include="Mapping\ProduitMapping.cs" />
-    <Compile Include="Migrations\202104301922312_GestionDevis.cs" />
-    <Compile Include="Migrations\202104301922312_GestionDevis.designer.cs">
-      <DependentUpon>202104301922312_GestionDevis.cs</DependentUpon>
+    <Compile Include="Migrations\202105010840306_GestionDevis.cs" />
+    <Compile Include="Migrations\202105010840306_GestionDevis.designer.cs">
+      <DependentUpon>202105010840306_GestionDevis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Service\ServiceProduit.cs" />
+    <Compile Include="Service\ServiceSousProduit.cs" />
+    <Compile Include="View\FicheProduit.xaml.cs">
+      <DependentUpon>FicheProduit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ListeProduit.xaml.cs">
       <DependentUpon>ListeProduit.xaml</DependentUpon>
     </Compile>
@@ -153,13 +160,16 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\FicheProduit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ListeProduit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -174,8 +184,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202104301922312_GestionDevis.resx">
-      <DependentUpon>202104301922312_GestionDevis.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105010840306_GestionDevis.resx">
+      <DependentUpon>202105010840306_GestionDevis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

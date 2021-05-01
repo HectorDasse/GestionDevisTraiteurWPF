@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestionDevisTraiteurWPF.Entity
+namespace GestionDevisTraiteurWPF.Dto
 {
-	public class SousProduit
+	class SousProduitDto
 	{
-		[Key]
-		public int id { get; set; }
+
 		public string nom { get; set; }
 		public double prix { get; set; }
 		public DateTime DateMiseAJour { get; set; }
 
-		public Produit produit { get; set; }
+		ProduitDto ProduitDto { get; set; }
 	}
 }
