@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Service\ServiceFamille.cs" />
     <Compile Include="Service\ServiceProduit.cs" />
     <Compile Include="Service\ServiceSousProduit.cs" />
     <Compile Include="View\FicheProduit.xaml.cs">

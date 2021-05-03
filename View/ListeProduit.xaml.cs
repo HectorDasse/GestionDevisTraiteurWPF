@@ -41,5 +41,17 @@ namespace GestionDevisTraiteurWPF.View
 			fenetre.Show();
 			this.Close();
 		}
+
+		private void button_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void NewPropduit(object sender, RoutedEventArgs e)
+		{
+			FicheProduit fenetre = new FicheProduit(new ProduitDto());
+			fenetre.Show();
+			this.Close();
+		}
 	}
 }

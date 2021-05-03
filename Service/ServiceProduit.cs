@@ -11,19 +11,9 @@ using System.Threading.Tasks;
 
 namespace GestionDevisTraiteurWPF.Service
 {
-	public class ServiceProduit : IProduitManager
+	public class ServiceProduit
 	{
 		private MyDbContext context = new MyDbContext();
-
-		public Task<ProduitDto> Add(EntityDto entityDto)
-		{
-			throw new NotImplementedException();
-		}
-
-		public Task Delete(int id)
-		{
-			throw new NotImplementedException();
-		}
 
 		public List<ProduitDto> getAll()
 		{
@@ -39,19 +29,26 @@ namespace GestionDevisTraiteurWPF.Service
 			throw new NotImplementedException();
 		}
 
-		public Task getById(int id)
+		public void AddProduit(ProduitDto produitDto)
 		{
-			throw new NotImplementedException();
+			var config = new MapperConfiguration(cfg =>
+					cfg.CreateMap<ProduitDto, Produit>()
+				);
+			var mapper = config.CreateMapper();
+			
+			var res = mapper.Map<ProduitDto, Produit>(produitDto);
+			res.DateMiseAJour = DateTime.Today;
+			context.produits.Add(res);
+			context.SaveChanges();
 		}
 
-		public Task saveChanges()
+		public void UpdateProduit(ProduitDto produitDto)
 		{
-			throw new NotImplementedException();
-		}
-
-		public Task<ProduitDto> Update(int id, EntityDto entityDto)
-		{
-			throw new NotImplementedException();
+			Produit produit = context.produits.Find(produitDto.id);
+			produit.nom = produitDto.nom;
+			produit.prix = produitDto.prix;
+			produit.DateMiseAJour = DateTime.Today;
+			context.SaveChanges();
 		}
 	}
 }

@@ -11,7 +11,5 @@ namespace GestionDevisTraiteurWPF.Dto
 	{
 
 		public String nom { get; set; }
-		public List<ProduitDto> produitDtos { get; set; }
-
 	}
 }
