@@ -24,5 +24,24 @@ namespace GestionDevisTraiteurWPF.Service
 			var res = mapper.Map<List<Famille>, List<FamilleDto>>(familles);
 			return res;
 		}
+
+		public void AddProduit(FamilleDto familleDto)
+		{
+			var config = new MapperConfiguration(cfg =>
+					cfg.CreateMap<FamilleDto, Famille>()
+				);
+			var mapper = config.CreateMapper();
+
+			var res = mapper.Map<FamilleDto, Famille>(familleDto);
+			context.familles.Add(res);
+			context.SaveChanges();
+		}
+
+		public void UpdateProduit(FamilleDto familleDto)
+		{
+			Famille famille = context.familles.Find(familleDto.id);
+			famille.nom = familleDto.nom;
+			context.SaveChanges();
+		}
 	}
 }

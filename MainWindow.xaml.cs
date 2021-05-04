@@ -1,22 +1,8 @@
-﻿using Gestion_Devis_Traiteur;
-using GestionDevisTraiteurWPF.Dto;
-using GestionDevisTraiteurWPF.Manager;
-using GestionDevisTraiteurWPF.Service;
-using GestionDevisTraiteurWPF.View;
+﻿using GestionDevisTraiteurWPF.View;
+using GestionDevisTraiteurWPF.View.Famille;
+using GestionDevisTraiteurWPF.View.Produit;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GestionDevisTraiteurWPF
 {
@@ -28,8 +14,18 @@ namespace GestionDevisTraiteurWPF
 		public MainWindow()
 		{
 			InitializeComponent();
+		}
 
-			ListeProduit fenetre = new ListeProduit();
+		private void ListeFamille(object sender, RoutedEventArgs e)
+		{
+			ListeFamille fenetre = new ListeFamille();
+			fenetre.Show();
+			this.Close();
+		}
+
+		private void ListeProduit(object sender, RoutedEventArgs e)
+		{
+			ListeProduits fenetre = new ListeProduits();
 			fenetre.Show();
 			this.Close();
 		}

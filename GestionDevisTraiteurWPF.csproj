@@ -138,11 +138,17 @@
     <Compile Include="Service\ServiceFamille.cs" />
     <Compile Include="Service\ServiceProduit.cs" />
     <Compile Include="Service\ServiceSousProduit.cs" />
-    <Compile Include="View\FicheProduit.xaml.cs">
+    <Compile Include="View\Famille\FicheFamille.xaml.cs">
+      <DependentUpon>FicheFamille.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Famille\ListeFamille.xaml.cs">
+      <DependentUpon>ListeFamille.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produit\FicheProduit.xaml.cs">
       <DependentUpon>FicheProduit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ListeProduit.xaml.cs">
-      <DependentUpon>ListeProduit.xaml</DependentUpon>
+    <Compile Include="View\Produit\ListeProduits.xaml.cs">
+      <DependentUpon>ListeProduits.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -161,11 +167,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\FicheProduit.xaml">
+    <Page Include="View\Famille\FicheFamille.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ListeProduit.xaml">
+    <Page Include="View\Famille\ListeFamille.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Produit\FicheProduit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Produit\ListeProduits.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

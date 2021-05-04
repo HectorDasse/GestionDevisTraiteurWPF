@@ -1,5 +1,4 @@
 ﻿using GestionDevisTraiteurWPF.Dto;
-using GestionDevisTraiteurWPF.Manager;
 using GestionDevisTraiteurWPF.Service;
 using System;
 using System.Collections.Generic;
@@ -15,16 +14,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace GestionDevisTraiteurWPF.View
+namespace GestionDevisTraiteurWPF.View.Produit
 {
 	/// <summary>
-	/// Logique d'interaction pour ListeProduit.xaml
+	/// Logique d'interaction pour ListeProduits.xaml
 	/// </summary>
-	public partial class ListeProduit : Window
+	public partial class ListeProduits : Window
 	{
 		readonly ServiceProduit serviceProduit = new ServiceProduit();
 
-		public ListeProduit()
+		public ListeProduits()
 		{
 			InitializeComponent();
 
@@ -33,25 +32,23 @@ namespace GestionDevisTraiteurWPF.View
 			Produits.ItemsSource = produitDtos;
 		}
 
+		private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			
+		}
+
 		private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
 		{
 			DataGridRow row = sender as DataGridRow;
 			ProduitDto produitDto = (ProduitDto)row.DataContext;
 			FicheProduit fenetre = new FicheProduit(produitDto);
 			fenetre.Show();
-			this.Close();
-		}
-
-		private void button_Click(object sender, RoutedEventArgs e)
-		{
-
 		}
 
 		private void NewPropduit(object sender, RoutedEventArgs e)
 		{
 			FicheProduit fenetre = new FicheProduit(new ProduitDto());
 			fenetre.Show();
-			this.Close();
 		}
 	}
 }

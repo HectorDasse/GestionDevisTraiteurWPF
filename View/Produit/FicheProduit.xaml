@@ -1,9 +1,8 @@
-﻿<Window x:Class="GestionDevisTraiteurWPF.View.FicheProduit"
+﻿<Window x:Class="GestionDevisTraiteurWPF.View.Produit.FicheProduit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GestionDevisTraiteurWPF.View"
         mc:Ignorable="d"
         Closing="DataWindow_Closing" 
         Title="FicheProduit" Height="450" Width="800">

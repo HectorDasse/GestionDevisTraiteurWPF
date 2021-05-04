@@ -50,5 +50,17 @@ namespace GestionDevisTraiteurWPF.Service
 			produit.DateMiseAJour = DateTime.Today;
 			context.SaveChanges();
 		}
+
+		public List<ProduitDto> GetSousProduitByFamille(int idFamille)
+		{
+			var Produits = context.produits.Where(b => b.famille.id == idFamille).ToList();
+
+			var config = new MapperConfiguration(cfg =>
+					cfg.CreateMap<Produit, ProduitDto>()
+				);
+			var mapper = config.CreateMapper();
+			var res = mapper.Map<List<Produit>, List<ProduitDto>>(Produits);
+			return res;
+		}
 	}
 }

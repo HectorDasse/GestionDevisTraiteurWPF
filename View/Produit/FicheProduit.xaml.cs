@@ -1,21 +1,14 @@
 ﻿using GestionDevisTraiteurWPF.Dto;
 using GestionDevisTraiteurWPF.Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace GestionDevisTraiteurWPF.View
+using System.Windows.Input;
+
+
+namespace GestionDevisTraiteurWPF.View.Produit
 {
 	/// <summary>
 	/// Logique d'interaction pour FicheProduit.xaml
@@ -43,14 +36,13 @@ namespace GestionDevisTraiteurWPF.View
 
 		private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			ListeProduit fenetre = new ListeProduit();
-			fenetre.Show();
+			
 		}
 
 		private void Valider(object sender, RoutedEventArgs e)
 		{
 			FamilleDto familleDto = (FamilleDto)comboFamille.SelectedItem;
-			
+
 
 			ProduitDto produitDto = new ProduitDto();
 			produitDto.nom = this.Nom.Text;
@@ -60,13 +52,12 @@ namespace GestionDevisTraiteurWPF.View
 			if (this.Id.Text == "0")
 			{
 				serviceProduit.AddProduit(produitDto);
-			} else
+			}
+			else
 			{
 				produitDto.id = Convert.ToInt32(this.Id.Text);
 				serviceProduit.UpdateProduit(produitDto);
 			}
-			ListeProduit fenetre = new ListeProduit();
-			fenetre.Show();
 			this.Close();
 		}
 
