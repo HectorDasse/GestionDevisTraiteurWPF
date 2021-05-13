@@ -47,6 +47,7 @@ namespace GestionDevisTraiteurWPF.Service
 			Produit produit = context.produits.Find(produitDto.id);
 			produit.nom = produitDto.nom;
 			produit.prix = produitDto.prix;
+			produit.famille = context.familles.Find(produitDto.famille.id);
 			produit.DateMiseAJour = DateTime.Today;
 			context.SaveChanges();
 		}

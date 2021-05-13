@@ -1,4 +1,5 @@
 ﻿using GestionDevisTraiteurWPF.View;
+using GestionDevisTraiteurWPF.View.Client;
 using GestionDevisTraiteurWPF.View.Famille;
 using GestionDevisTraiteurWPF.View.Produit;
 using System;
@@ -26,6 +27,13 @@ namespace GestionDevisTraiteurWPF
 		private void ListeProduit(object sender, RoutedEventArgs e)
 		{
 			ListeProduits fenetre = new ListeProduits();
+			fenetre.Show();
+			this.Close();
+		}
+
+		private void ListeClient(object sender, RoutedEventArgs e)
+		{
+			ListeClient fenetre = new ListeClient();
 			fenetre.Show();
 			this.Close();
 		}

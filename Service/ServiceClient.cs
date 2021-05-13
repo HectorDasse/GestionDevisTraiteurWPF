@@ -10,37 +10,40 @@ using System.Threading.Tasks;
 
 namespace GestionDevisTraiteurWPF.Service
 {
-	public class ServiceFamille
+	class ServiceClient
 	{
+
 		private MyDbContext context = new MyDbContext();
 
-		public List<FamilleDto> GetAll()
+		public List<ClientDto> GetAll()
 		{
-			List<Famille> familles =  context.familles.ToList();
+			List<Client> clients = context.clients.ToList();
 			var config = new MapperConfiguration(cfg =>
 					cfg.CreateMap<Famille, FamilleDto>()
 				);
 			var mapper = config.CreateMapper();
-			var res = mapper.Map<List<Famille>, List<FamilleDto>>(familles);
+			var res = mapper.Map<List<Client>, List<ClientDto>>(clients);
 			return res;
 		}
 
-		public void AddFamille(FamilleDto familleDto)
+		public void AddClient(ClientDto clientDto)
 		{
 			var config = new MapperConfiguration(cfg =>
-					cfg.CreateMap<FamilleDto, Famille>()
+					cfg.CreateMap<ClientDto, Client>()
 				);
 			var mapper = config.CreateMapper();
 
-			var res = mapper.Map<FamilleDto, Famille>(familleDto);
-			context.familles.Add(res);
+			var res = mapper.Map<ClientDto, Client>(clientDto);
+			context.clients.Add(res);
 			context.SaveChanges();
 		}
 
-		public void UpdateFamille(FamilleDto familleDto)
+		public void UpdateClient(ClientDto clientDto)
 		{
-			Famille famille = context.familles.Find(familleDto.id);
-			famille.nom = familleDto.nom;
+			Client client = context.clients.Find(clientDto.id);
+			client.nom = clientDto.nom;
+			client.prenom = clientDto.prenom;
+			client.adresse = clientDto.adresse;
 			context.SaveChanges();
 		}
 	}

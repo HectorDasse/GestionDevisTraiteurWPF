@@ -44,12 +44,12 @@ namespace GestionDevisTraiteurWPF.View.Famille
 			familleDto.nom = this.Nom.Text;
 			if (this.Id.Text == "0")
 			{
-				serviceFamille.AddProduit(familleDto);
+				serviceFamille.AddFamille(familleDto);
 			}
 			else
 			{
 				familleDto.id = Convert.ToInt32(this.Id.Text);
-				serviceFamille.UpdateProduit(familleDto);
+				serviceFamille.UpdateFamille(familleDto);
 			}
 			this.Close();
 		}
