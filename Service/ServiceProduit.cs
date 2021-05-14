@@ -5,6 +5,7 @@ using GestionDevisTraiteurWPF.Entity;
 using GestionDevisTraiteurWPF.Manager;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,6 +62,19 @@ namespace GestionDevisTraiteurWPF.Service
 				);
 			var mapper = config.CreateMapper();
 			var res = mapper.Map<List<Produit>, List<ProduitDto>>(Produits);
+			return res;
+		}
+
+
+		public FamilleDto getFamilleDtoProduit(int idProduit)
+		{
+			Produit produit = context.produits.Where(p => p.id == idProduit).Include("Famille").FirstOrDefault();
+
+			var config = new MapperConfiguration(cfg =>
+					cfg.CreateMap<Famille, FamilleDto>()
+				);
+			var mapper = config.CreateMapper();
+			var res = mapper.Map<Famille, FamilleDto>(produit.famille);
 			return res;
 		}
 	}

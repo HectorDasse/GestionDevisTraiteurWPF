@@ -20,17 +20,21 @@ namespace GestionDevisTraiteurWPF.View.Produit
 		readonly ServiceProduit serviceProduit = new ServiceProduit();
 		readonly ServiceFamille serviceFamille = new ServiceFamille();
 
-		public FicheProduit(ProduitDto produit)
+		public FicheProduit(ProduitDto produitDto)
 		{
 			InitializeComponent();
 
-			dataGridSousProduit.ItemsSource = serviceSousProduit.GetSousProduitByProduit(produit.id);
+			dataGridSousProduit.ItemsSource = serviceSousProduit.GetSousProduitByProduit(produitDto.id);
 			comboFamille.ItemsSource = serviceFamille.GetAll();
 
-			this.Nom.Text = produit.nom;
-			this.Prix.Text = produit.prix.ToString();
-			this.Id.Text = produit.id.ToString();
-			comboFamille.SelectedItem = produit.famille;
+			this.Nom.Text = produitDto.nom;
+			this.Prix.Text = produitDto.prix.ToString();
+			this.Id.Text = produitDto.id.ToString();
+
+			//cherche le produit dans la base pour recup la famille
+			produitDto.famille = serviceProduit.getFamilleDtoProduit(produitDto.id);
+
+			comboFamille.SelectedValue = produitDto.famille.id;
 
 		}
 

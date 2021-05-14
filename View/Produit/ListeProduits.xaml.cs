@@ -26,10 +26,16 @@ namespace GestionDevisTraiteurWPF.View.Produit
 		public ListeProduits()
 		{
 			InitializeComponent();
+			try
+			{
+				List<ProduitDto> produitDtos = serviceProduit.getAll();
 
-			List<ProduitDto> produitDtos = serviceProduit.getAll();
+				Produits.ItemsSource = produitDtos;
+			} catch (Exception e)
+			{
+				MessageBox.Show(e.Message);
+			}
 
-			Produits.ItemsSource = produitDtos;
 		}
 
 		private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)

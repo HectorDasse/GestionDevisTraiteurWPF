@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionDevisTraiteurWPF.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GestionDevisTraiteurWPF.Dto
 {
-	class SousProduitDto
+	class SousProduitDto : EntityDto
 	{
 
 		public string nom { get; set; }
