@@ -50,5 +50,10 @@ namespace GestionDevisTraiteurWPF.View.Client
 			}
 			this.Close();
 		}
+
+		private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			
+		}
 	}
 }

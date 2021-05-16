@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionDevisTraiteurWPF.View.Client"
         mc:Ignorable="d"
+        Closing="DataWindow_Closing"
         Title="FicheClient" Height="223.77" Width="488.934">
     <Grid>
         <Grid.ColumnDefinitions>

@@ -28,9 +28,7 @@ namespace GestionDevisTraiteurWPF.View.Produit
 			InitializeComponent();
 			try
 			{
-				List<ProduitDto> produitDtos = serviceProduit.getAll();
-
-				Produits.ItemsSource = produitDtos;
+				this.chargeTab();
 			} catch (Exception e)
 			{
 				MessageBox.Show(e.Message);
@@ -40,7 +38,8 @@ namespace GestionDevisTraiteurWPF.View.Produit
 
 		private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			
+			MainWindow fenetre = new MainWindow();
+			fenetre.Show();
 		}
 
 		private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
@@ -48,13 +47,22 @@ namespace GestionDevisTraiteurWPF.View.Produit
 			DataGridRow row = sender as DataGridRow;
 			ProduitDto produitDto = (ProduitDto)row.DataContext;
 			FicheProduit fenetre = new FicheProduit(produitDto);
+			fenetre.Owner = this;
 			fenetre.Show();
 		}
 
 		private void NewPropduit(object sender, RoutedEventArgs e)
 		{
 			FicheProduit fenetre = new FicheProduit(new ProduitDto());
+			fenetre.Owner = this;
 			fenetre.Show();
+		}
+
+		public void chargeTab()
+		{
+			List<ProduitDto> produitDtos = serviceProduit.getAll();
+
+			Produits.ItemsSource = produitDtos;
 		}
 	}
 }

@@ -34,12 +34,14 @@ namespace GestionDevisTraiteurWPF.View.Famille
 
 		private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			
+			MainWindow fenetre = new MainWindow();
+			fenetre.Show();
 		}
 
 		private void NewFamille(object sender, RoutedEventArgs e)
 		{
 			FicheFamille fenetre = new FicheFamille(new FamilleDto());
+			fenetre.Owner = this;
 			fenetre.Show();
 		}
 
@@ -48,6 +50,7 @@ namespace GestionDevisTraiteurWPF.View.Famille
 			DataGridRow row = sender as DataGridRow;
 			FamilleDto familleDto = (FamilleDto)row.DataContext;
 			FicheFamille fenetre = new FicheFamille(familleDto);
+			fenetre.Owner = this;
 			fenetre.Show();
 		}
 	}

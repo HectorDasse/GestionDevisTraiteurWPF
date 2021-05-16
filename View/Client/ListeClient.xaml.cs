@@ -27,14 +27,13 @@ namespace GestionDevisTraiteurWPF.View.Client
 		public ListeClient()
 		{
 			InitializeComponent();
-			List<ClientDto> clientDtos = serviceClient.GetAll();
-
-			Clients.ItemsSource = clientDtos;
+			this.ChargeTab();
 		}
 
 		private void NewClient(object sender, RoutedEventArgs e)
 		{
 			FicheClient fenetre = new FicheClient(new ClientDto());
+			fenetre.Owner = this;
 			fenetre.Show();
 		}
 
@@ -43,7 +42,21 @@ namespace GestionDevisTraiteurWPF.View.Client
 			DataGridRow row = sender as DataGridRow;
 			ClientDto clientDto = (ClientDto)row.DataContext;
 			FicheClient fenetre = new FicheClient(clientDto);
+			fenetre.Owner = this;
 			fenetre.Show();
+		}
+
+		private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			MainWindow fenetre = new MainWindow();
+			fenetre.Show();
+		}
+
+		private void ChargeTab()
+		{
+			List<ClientDto> clientDtos = serviceClient.GetAll();
+
+			Clients.ItemsSource = clientDtos;
 		}
 	}
 }

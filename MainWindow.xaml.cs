@@ -1,4 +1,5 @@
-﻿using GestionDevisTraiteurWPF.View;
+﻿using Gestion_Devis_Traiteur;
+using GestionDevisTraiteurWPF.View;
 using GestionDevisTraiteurWPF.View.Client;
 using GestionDevisTraiteurWPF.View.Famille;
 using GestionDevisTraiteurWPF.View.Produit;
@@ -16,6 +17,7 @@ namespace GestionDevisTraiteurWPF
 		public MainWindow()
 		{
 			InitializeComponent();
+			Application.Current.Properties["dbContext"] = new MyDbContext();
 		}
 
 		private void ListeFamille(object sender, RoutedEventArgs e)

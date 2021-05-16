@@ -32,15 +32,24 @@ namespace GestionDevisTraiteurWPF.View.Produit
 			this.Id.Text = produitDto.id.ToString();
 
 			//cherche le produit dans la base pour recup la famille
-			produitDto.famille = serviceProduit.getFamilleDtoProduit(produitDto.id);
-
-			comboFamille.SelectedValue = produitDto.famille.id;
-
+			if (produitDto.id != 0)
+			{
+				produitDto.famille = serviceProduit.getFamilleDtoProduit(produitDto.id);
+				comboFamille.SelectedValue = produitDto.famille.id;
+			}		
 		}
 
 		private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			
+			foreach (var element in Application.Current.Windows)
+			{
+				if (element.ToString() == "GestionDevisTraiteurWPF.View.Produit.ListeProduits")
+				{
+					ListeProduits listeProduits = (ListeProduits)element;
+					listeProduits.Produits.ItemsSource = null;
+					listeProduits.chargeTab();
+				}
+			}
 		}
 
 		private void Valider(object sender, RoutedEventArgs e)

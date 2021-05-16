@@ -10,7 +10,7 @@
     <Grid>
         <DataGrid x:Name="Produits" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="698" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding id}" />
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Nom" Binding="{Binding nom}" />
                 <DataGridTextColumn Header="Prix" Binding="{Binding prix}" />
             </DataGrid.Columns>

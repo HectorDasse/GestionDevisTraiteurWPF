@@ -19,7 +19,7 @@ namespace GestionDevisTraiteurWPF.Service
 		{
 			List<Client> clients = context.clients.ToList();
 			var config = new MapperConfiguration(cfg =>
-					cfg.CreateMap<Famille, FamilleDto>()
+					cfg.CreateMap<Client, ClientDto>()
 				);
 			var mapper = config.CreateMapper();
 			var res = mapper.Map<List<Client>, List<ClientDto>>(clients);
