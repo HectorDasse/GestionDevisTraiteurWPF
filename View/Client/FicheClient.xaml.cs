@@ -53,7 +53,15 @@ namespace GestionDevisTraiteurWPF.View.Client
 
 		private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			
+			foreach (var element in Application.Current.Windows)
+			{
+				if (element.ToString() == "GestionDevisTraiteurWPF.View.Client.ListeClient")
+				{
+					ListeClient listeClient = (ListeClient)element;
+					listeClient.Clients.ItemsSource = null;
+					listeClient.ChargeTab();
+				}
+			}
 		}
 	}
 }

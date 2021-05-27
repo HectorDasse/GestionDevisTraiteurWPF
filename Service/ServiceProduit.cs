@@ -3,6 +3,7 @@ using Gestion_Devis_Traiteur;
 using GestionDevisTraiteurWPF.Dto;
 using GestionDevisTraiteurWPF.Entity;
 using GestionDevisTraiteurWPF.Manager;
+using GestionDevisTraiteurWPF.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,17 +16,15 @@ namespace GestionDevisTraiteurWPF.Service
 {
 	public class ServiceProduit
 	{
-		private MyDbContext context = new MyDbContext();
+		private readonly MyDbContext context = (MyDbContext)Application.Current.Properties["dbContext"];
+
+		private readonly IMapper mapper = (IMapper)Application.Current.Properties["Mapper"];
 
 		public List<ProduitDto> getAll()
 		{
 			
 			var produits = context.produits.ToList();
 
-			var config = new MapperConfiguration(cfg =>
-					cfg.CreateMap<Produit, ProduitDto>()
-				);
-			var mapper = config.CreateMapper();
 			var res = mapper.Map<List<Produit>, List<ProduitDto>>(produits);
 			return res;
 			throw new NotImplementedException();
@@ -33,10 +32,6 @@ namespace GestionDevisTraiteurWPF.Service
 
 		public void AddProduit(ProduitDto produitDto)
 		{
-			var config = new MapperConfiguration(cfg =>
-					cfg.CreateMap<ProduitDto, Produit>()
-				);
-			var mapper = config.CreateMapper();
 			
 			var res = mapper.Map<ProduitDto, Produit>(produitDto);
 			res.DateMiseAJour = DateTime.Today;
@@ -54,14 +49,9 @@ namespace GestionDevisTraiteurWPF.Service
 			context.SaveChanges();
 		}
 
-		public List<ProduitDto> GetSousProduitByFamille(int idFamille)
+		public List<ProduitDto> GetProduitByFamille(int idFamille)
 		{
 			var Produits = context.produits.Where(b => b.famille.id == idFamille).ToList();
-
-			var config = new MapperConfiguration(cfg =>
-					cfg.CreateMap<Produit, ProduitDto>()
-				);
-			var mapper = config.CreateMapper();
 			var res = mapper.Map<List<Produit>, List<ProduitDto>>(Produits);
 			return res;
 		}
@@ -71,10 +61,6 @@ namespace GestionDevisTraiteurWPF.Service
 		{
 			Produit produit = context.produits.Where(p => p.id == idProduit).Include("Famille").FirstOrDefault();
 
-			var config = new MapperConfiguration(cfg =>
-					cfg.CreateMap<Famille, FamilleDto>()
-				);
-			var mapper = config.CreateMapper();
 			var res = mapper.Map<Famille, FamilleDto>(produit.famille);
 			return res;
 		}

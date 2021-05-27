@@ -7,30 +7,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GestionDevisTraiteurWPF.Service
 {
 	public class ServiceFamille
 	{
-		private MyDbContext context = new MyDbContext();
+		private readonly MyDbContext context = (MyDbContext)Application.Current.Properties["dbContext"];
+
+		private readonly IMapper mapper = (IMapper)Application.Current.Properties["Mapper"];
 
 		public List<FamilleDto> GetAll()
 		{
 			List<Famille> familles =  context.familles.ToList();
-			var config = new MapperConfiguration(cfg =>
-					cfg.CreateMap<Famille, FamilleDto>()
-				);
-			var mapper = config.CreateMapper();
 			var res = mapper.Map<List<Famille>, List<FamilleDto>>(familles);
 			return res;
 		}
 
 		public void AddFamille(FamilleDto familleDto)
 		{
-			var config = new MapperConfiguration(cfg =>
-					cfg.CreateMap<FamilleDto, Famille>()
-				);
-			var mapper = config.CreateMapper();
 
 			var res = mapper.Map<FamilleDto, Famille>(familleDto);
 			context.familles.Add(res);

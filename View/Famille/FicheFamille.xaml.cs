@@ -28,14 +28,22 @@ namespace GestionDevisTraiteurWPF.View.Famille
 		{
 			InitializeComponent();
 
-			dataGridProduit.ItemsSource = serviceProduit.GetSousProduitByFamille(familleDto.id);
+			dataGridProduit.ItemsSource = serviceProduit.GetProduitByFamille(familleDto.id);
 			this.Id.Text = familleDto.id.ToString();
 			this.Nom.Text = familleDto.nom;
 		}
 
 		private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			
+			foreach (var element in Application.Current.Windows)
+			{
+				if (element.ToString() == "GestionDevisTraiteurWPF.View.Famille.ListeFamille")
+				{
+					ListeFamille listeFamille = (ListeFamille)element;
+					listeFamille.Familles.ItemsSource = null;
+					listeFamille.chargeTab();
+				}
+			}
 		}
 
 		private void Valider(object sender, RoutedEventArgs e)

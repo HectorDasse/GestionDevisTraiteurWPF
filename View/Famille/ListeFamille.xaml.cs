@@ -53,5 +53,12 @@ namespace GestionDevisTraiteurWPF.View.Famille
 			fenetre.Owner = this;
 			fenetre.Show();
 		}
+
+		internal void chargeTab()
+		{
+			List<FamilleDto> familleDtos = serviceFamille.GetAll();
+
+			Familles.ItemsSource = familleDtos;
+		}
 	}
 }

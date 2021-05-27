@@ -52,7 +52,7 @@ namespace GestionDevisTraiteurWPF.View.Client
 			fenetre.Show();
 		}
 
-		private void ChargeTab()
+		internal void ChargeTab()
 		{
 			List<ClientDto> clientDtos = serviceClient.GetAll();
 

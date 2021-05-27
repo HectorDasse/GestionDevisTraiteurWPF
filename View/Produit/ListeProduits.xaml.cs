@@ -1,4 +1,5 @@
-﻿using GestionDevisTraiteurWPF.Dto;
+﻿using Gestion_Devis_Traiteur;
+using GestionDevisTraiteurWPF.Dto;
 using GestionDevisTraiteurWPF.Service;
 using System;
 using System.Collections.Generic;

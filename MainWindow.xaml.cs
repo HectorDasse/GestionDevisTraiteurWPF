@@ -1,4 +1,7 @@
-﻿using Gestion_Devis_Traiteur;
+﻿using AutoMapper;
+using Gestion_Devis_Traiteur;
+using GestionDevisTraiteurWPF.Dto;
+using GestionDevisTraiteurWPF.Entity;
 using GestionDevisTraiteurWPF.View;
 using GestionDevisTraiteurWPF.View.Client;
 using GestionDevisTraiteurWPF.View.Famille;
@@ -18,6 +21,18 @@ namespace GestionDevisTraiteurWPF
 		{
 			InitializeComponent();
 			Application.Current.Properties["dbContext"] = new MyDbContext();
+			var config = new MapperConfiguration(cfg =>
+			{
+				cfg.CreateMap<Produit, ProduitDto>();
+				cfg.CreateMap<ProduitDto, Produit>();
+				cfg.CreateMap<Famille, FamilleDto>();
+				cfg.CreateMap<FamilleDto, Famille>();
+				cfg.CreateMap<Client, ClientDto>();
+				cfg.CreateMap<ClientDto, Client>();
+				cfg.CreateMap<SousProduit, SousProduitDto>();
+				cfg.CreateMap<SousProduitDto, SousProduitDto>();
+			});
+			Application.Current.Properties["Mapper"] = config.CreateMapper();
 		}
 
 		private void ListeFamille(object sender, RoutedEventArgs e)

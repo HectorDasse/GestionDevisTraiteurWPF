@@ -7,21 +7,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GestionDevisTraiteurWPF.Service
 {
 	class ServiceClient
 	{
 
-		private MyDbContext context = new MyDbContext();
+		private readonly MyDbContext context = (MyDbContext)Application.Current.Properties["dbContext"];
+
+		private readonly IMapper mapper = (IMapper)Application.Current.Properties["Mapper"];
 
 		public List<ClientDto> GetAll()
 		{
 			List<Client> clients = context.clients.ToList();
-			var config = new MapperConfiguration(cfg =>
-					cfg.CreateMap<Client, ClientDto>()
-				);
-			var mapper = config.CreateMapper();
+
 			var res = mapper.Map<List<Client>, List<ClientDto>>(clients);
 			return res;
 		}

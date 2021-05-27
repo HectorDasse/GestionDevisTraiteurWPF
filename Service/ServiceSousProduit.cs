@@ -8,13 +8,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GestionDevisTraiteurWPF.Service
 {
 	class ServiceSousProduit : ISousProduitManager
 	{
 
-		private MyDbContext context = new MyDbContext();
+		private readonly MyDbContext context = (MyDbContext)Application.Current.Properties["dbContext"];
+
+		private readonly IMapper mapper = (IMapper)Application.Current.Properties["Mapper"];
 
 		public Task<SousProduitDto> Add(EntityDto entityDto)
 		{
@@ -50,10 +53,6 @@ namespace GestionDevisTraiteurWPF.Service
 		{
 			var sousProduits = context.sousProduits.Where(b => b.produit.id == idProduit).ToList();
 
-			var config = new MapperConfiguration(cfg =>
-					cfg.CreateMap<SousProduit, SousProduitDto>()
-				);
-			var mapper = config.CreateMapper();
 			var res = mapper.Map<List<SousProduit>, List<SousProduitDto>>(sousProduits);
 			return res;
 		}
