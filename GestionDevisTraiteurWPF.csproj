@@ -145,9 +145,9 @@
     <Compile Include="Manager\IProduitManager.cs" />
     <Compile Include="Manager\ISousProduitManager.cs" />
     <Compile Include="Mapping\ProduitMapping.cs" />
-    <Compile Include="Migrations\202105010840306_GestionDevis.cs" />
-    <Compile Include="Migrations\202105010840306_GestionDevis.designer.cs">
-      <DependentUpon>202105010840306_GestionDevis.cs</DependentUpon>
+    <Compile Include="Migrations\202105280902454_GestionDevis.cs" />
+    <Compile Include="Migrations\202105280902454_GestionDevis.designer.cs">
+      <DependentUpon>202105280902454_GestionDevis.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\IRepository.cs" />
@@ -230,8 +230,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202105010840306_GestionDevis.resx">
-      <DependentUpon>202105010840306_GestionDevis.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105280902454_GestionDevis.resx">
+      <DependentUpon>202105280902454_GestionDevis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

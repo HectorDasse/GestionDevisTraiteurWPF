@@ -12,16 +12,20 @@ using System.Windows;
 
 namespace GestionDevisTraiteurWPF.Service
 {
-	class ServiceSousProduit : ISousProduitManager
+	class ServiceSousProduit
 	{
 
 		private readonly MyDbContext context = (MyDbContext)Application.Current.Properties["dbContext"];
 
 		private readonly IMapper mapper = (IMapper)Application.Current.Properties["Mapper"];
 
-		public Task<SousProduitDto> Add(EntityDto entityDto)
+		public void Add(SousProduitDto sousProduitDto)
 		{
-			throw new NotImplementedException();
+			var res = mapper.Map<SousProduitDto, SousProduit>(sousProduitDto);
+			res.DateMiseAJour = DateTime.Today;
+			res.produit = context.produits.Find(sousProduitDto.ProduitDto.id);
+			context.sousProduits.Add(res);
+			context.SaveChanges();
 		}
 
 		public Task Delete(int id)
@@ -44,9 +48,16 @@ namespace GestionDevisTraiteurWPF.Service
 			throw new NotImplementedException();
 		}
 
-		public Task<SousProduitDto> Update(int id, EntityDto entityDto)
+		public void Update(SousProduitDto sousProduitDto)
 		{
-			throw new NotImplementedException();
+			SousProduit sousProduit = context.sousProduits.Find(sousProduitDto.id);
+			sousProduit.nom = sousProduitDto.nom;
+			sousProduit.prix = sousProduitDto.prix;
+			sousProduit.produit = context.produits.Find(sousProduitDto.ProduitDto.id);
+			sousProduit.DateMiseAJour = DateTime.Today;
+			sousProduit.poids = sousProduitDto.poids;
+			sousProduit.quantite = sousProduitDto.quantite;
+			context.SaveChanges();
 		}
 
 		public List<SousProduitDto> GetSousProduitByProduit(int idProduit)

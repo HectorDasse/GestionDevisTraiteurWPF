@@ -13,7 +13,7 @@ namespace GestionDevisTraiteurWPF.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202105010840306_GestionDevis"; }
+            get { return "202105280902454_GestionDevis"; }
         }
         
         string IMigrationMetadata.Source

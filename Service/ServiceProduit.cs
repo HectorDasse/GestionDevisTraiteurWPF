@@ -30,23 +30,29 @@ namespace GestionDevisTraiteurWPF.Service
 			throw new NotImplementedException();
 		}
 
-		public void AddProduit(ProduitDto produitDto)
+		public ProduitDto AddProduit(ProduitDto produitDto)
 		{
-			
+
 			var res = mapper.Map<ProduitDto, Produit>(produitDto);
+			res.famille = context.familles.Find(produitDto.famille.id);
 			res.DateMiseAJour = DateTime.Today;
 			context.produits.Add(res);
 			context.SaveChanges();
+
+			return mapper.Map<Produit, ProduitDto>(res);
 		}
 
-		public void UpdateProduit(ProduitDto produitDto)
+		public ProduitDto UpdateProduit(ProduitDto produitDto)
 		{
 			Produit produit = context.produits.Find(produitDto.id);
 			produit.nom = produitDto.nom;
 			produit.prix = produitDto.prix;
 			produit.famille = context.familles.Find(produitDto.famille.id);
 			produit.DateMiseAJour = DateTime.Today;
+			produit.ProduitSimple = produitDto.ProduitSimple;
 			context.SaveChanges();
+
+			return mapper.Map<Produit, ProduitDto>(produit);
 		}
 
 		public List<ProduitDto> GetProduitByFamille(int idFamille)
@@ -63,6 +69,19 @@ namespace GestionDevisTraiteurWPF.Service
 
 			var res = mapper.Map<Famille, FamilleDto>(produit.famille);
 			return res;
+		}
+
+		public Boolean verifieProduitExiste(string nom)
+		{
+			Produit produit = context.produits.Where(p => p.nom == nom).FirstOrDefault();
+			if (produit == null)
+			{
+				return false;
+			}else
+			{
+				MessageBox.Show("Ce produit existe déja");
+				return true;
+			}
 		}
 	}
 }

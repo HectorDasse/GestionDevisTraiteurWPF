@@ -18,10 +18,12 @@
 
         <DataGrid x:Name="dataGridSousProduit" HorizontalAlignment="Left" Height="399" Margin="313,10,0,0" VerticalAlignment="Top" Width="469" AutoGenerateColumns="False" SelectionMode="Single" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding id}" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Nom" Binding="{Binding nom}" />
-                <DataGridTextColumn Header="Prix" Binding="{Binding prix}" />
-                <DataGridTextColumn Header="Date derniere mise a jour" Binding="{Binding DateMiseAJour}" />
+                <DataGridTextColumn x:Name="TabID" Header="ID" Binding="{Binding id}" Visibility="Hidden"/>
+                <DataGridTextColumn x:Name="TabNom" Header="Nom" Binding="{Binding nom}" />
+                <DataGridTextColumn x:Name="TabPrix" Header="Prix" Binding="{Binding prix}" />
+                <DataGridTextColumn x:Name="TabDate" Header="Date derniere mise a jour" Binding="{Binding DateMiseAJour}" />
+                <DataGridTextColumn x:Name="TabQuantite" Header="Quantite" Binding="{Binding quantite}" />
+                <DataGridTextColumn x:Name="TabPoids" Header="Poids" Binding="{Binding poids}" />
             </DataGrid.Columns>
         </DataGrid>
         
@@ -36,6 +38,9 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+
+        <Label x:Name="labelProduitSimple" Content="Produit simple" HorizontalAlignment="Left" Margin="41,148,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="ProduitSimple"  HorizontalAlignment="Left" Margin="133,154,0,0" VerticalAlignment="Top"/>
 
         <Button x:Name="buttonValider" Content="Valider" HorizontalAlignment="Left" Margin="233,389,0,0" VerticalAlignment="Top" Width="75" Click="Valider"/>
     </Grid>

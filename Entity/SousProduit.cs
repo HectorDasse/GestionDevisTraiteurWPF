@@ -14,6 +14,8 @@ namespace GestionDevisTraiteurWPF.Entity
 		public string nom { get; set; }
 		public double prix { get; set; }
 		public DateTime DateMiseAJour { get; set; }
+		public int quantite { get; set; }
+		public double poids { get; set; }
 
 		public Produit produit { get; set; }
 	}

@@ -13,7 +13,9 @@ namespace GestionDevisTraiteurWPF.Dto
 		public string nom { get; set; }
 		public double prix { get; set; }
 		public DateTime DateMiseAJour { get; set; }
+		public int quantite { get; set; }
+		public double poids { get; set; }
 
-		ProduitDto ProduitDto { get; set; }
+		public ProduitDto ProduitDto { get; set; }
 	}
 }

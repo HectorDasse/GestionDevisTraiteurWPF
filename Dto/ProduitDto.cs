@@ -13,7 +13,8 @@ namespace GestionDevisTraiteurWPF.Dto
 		public string nom { get; set; }
 		public string unite { get; set; }
 		public double prix { get; set; }
-		
+		public Boolean ProduitSimple { get; set; }
+
 		public FamilleDto famille { get; set; }
 	}
 }
