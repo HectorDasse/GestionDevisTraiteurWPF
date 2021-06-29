@@ -17,6 +17,8 @@ namespace GestionDevisTraiteurWPF.Service
 
 		private readonly IMapper mapper = (IMapper)Application.Current.Properties["Mapper"];
 
+		private ServiceProduit ServiceProduit = new ServiceProduit();
+
 		public List<FamilleDto> GetAll()
 		{
 			List<Famille> familles =  context.familles.ToList();
@@ -36,6 +38,30 @@ namespace GestionDevisTraiteurWPF.Service
 		{
 			Famille famille = context.familles.Find(familleDto.id);
 			famille.nom = familleDto.nom;
+			context.SaveChanges();
+		}
+
+		public FamilleDto getFamilleById(int id)
+		{
+			Famille famille = context.familles.Find(id);
+			var res = mapper.Map<Famille, FamilleDto>(famille);
+			return res;
+		}
+
+		public void supprimer(FamilleDto familleDto)
+		{
+			List<ProduitDto> produitDtos = ServiceProduit.GetProduitByFamille(familleDto.id);
+
+			FamilleDto familleDtoDefaut = getFamilleById(1);
+
+			foreach (ProduitDto produitDto in produitDtos)
+			{
+				produitDto.famille = familleDtoDefaut;
+				ServiceProduit.UpdateProduit(produitDto);
+			}
+
+			Famille famille = context.familles.Find(familleDto.id);
+			context.familles.Remove(famille);
 			context.SaveChanges();
 		}
 	}
