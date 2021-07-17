@@ -58,5 +58,12 @@ namespace GestionDevisTraiteurWPF.View.Client
 
 			Clients.ItemsSource = clientDtos;
 		}
+
+		private void SupprimerClient(object sender, RoutedEventArgs e)
+		{
+			ClientDto client = (ClientDto)Clients.SelectedItem;
+			serviceClient.Supprimer(client);
+			ChargeTab();
+		}
 	}
 }

@@ -46,5 +46,12 @@ namespace GestionDevisTraiteurWPF.Service
 			client.adresse = clientDto.adresse;
 			context.SaveChanges();
 		}
+
+		public void Supprimer(ClientDto clientDto)
+		{
+			Client client = context.clients.Find(clientDto.id);
+			context.clients.Remove(client);
+			context.SaveChanges();
+		}
 	}
 }

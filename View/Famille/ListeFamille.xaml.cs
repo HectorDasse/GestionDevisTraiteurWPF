@@ -63,8 +63,8 @@ namespace GestionDevisTraiteurWPF.View.Famille
 
 		private void SupprimerFamille(object sender, RoutedEventArgs e)
 		{
-			FamilleDto test = (FamilleDto)Familles.SelectedItem;
-			serviceFamille.supprimer(test);
+			FamilleDto familleDto = (FamilleDto)Familles.SelectedItem;
+			serviceFamille.supprimer(familleDto);
 			chargeTab();
 		}
 	}
