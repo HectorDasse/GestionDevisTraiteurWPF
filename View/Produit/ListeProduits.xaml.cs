@@ -65,5 +65,12 @@ namespace GestionDevisTraiteurWPF.View.Produit
 
 			Produits.ItemsSource = produitDtos;
 		}
+
+		private void SupprimerProduit(object sender, RoutedEventArgs e)
+		{
+			ProduitDto produitDto = (ProduitDto)Produits.SelectedItem;
+			serviceProduit.supprimer(produitDto);
+			chargeTab();
+		}
 	}
 }

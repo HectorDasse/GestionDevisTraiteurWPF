@@ -20,6 +20,8 @@ namespace GestionDevisTraiteurWPF.Service
 
 		private readonly IMapper mapper = (IMapper)Application.Current.Properties["Mapper"];
 
+		private ServiceSousProduit ServiceSousProduit = new ServiceSousProduit();
+
 		public List<ProduitDto> getAll()
 		{
 			
@@ -82,6 +84,20 @@ namespace GestionDevisTraiteurWPF.Service
 				MessageBox.Show("Ce produit existe déja");
 				return true;
 			}
+		}
+
+		public void supprimer(ProduitDto produitDto)
+		{
+			List<SousProduitDto> sousProduitDtos = ServiceSousProduit.GetSousProduitByProduit(produitDto.id);
+
+			foreach (SousProduitDto sousProduitDto in sousProduitDtos)
+			{
+				ServiceSousProduit.Delete(sousProduitDto.id);
+			}
+
+			Produit produit = context.produits.Find(produitDto.id);
+			context.produits.Remove(produit);
+			context.SaveChanges();
 		}
 	}
 }

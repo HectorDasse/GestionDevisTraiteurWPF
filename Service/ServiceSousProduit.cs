@@ -28,9 +28,11 @@ namespace GestionDevisTraiteurWPF.Service
 			context.SaveChanges();
 		}
 
-		public Task Delete(int id)
+		public void Delete(int id)
 		{
-			throw new NotImplementedException();
+			SousProduit sousProduit = context.sousProduits.Find(id);
+			context.sousProduits.Remove(sousProduit);
+			context.SaveChanges();
 		}
 
 		public List<SousProduitDto> getAll()
