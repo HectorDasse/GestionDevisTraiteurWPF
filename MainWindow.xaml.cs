@@ -31,6 +31,8 @@ namespace GestionDevisTraiteurWPF
 				cfg.CreateMap<ClientDto, Client>();
 				cfg.CreateMap<SousProduit, SousProduitDto>();
 				cfg.CreateMap<SousProduitDto, SousProduit>();
+				cfg.CreateMap<Devis, DevisDto>();
+				cfg.CreateMap<DevisDto, Devis>();
 			});
 			Application.Current.Properties["Mapper"] = config.CreateMapper();
 		}

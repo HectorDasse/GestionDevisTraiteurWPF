@@ -136,6 +136,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Dto\ClientDto.cs" />
+    <Compile Include="Dto\DevisDto.cs" />
     <Compile Include="Dto\FamilleDto.cs" />
     <Compile Include="Dto\ProduitDto.cs" />
     <Compile Include="Dto\EntityDto.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Service\ServiceClient.cs" />
+    <Compile Include="Service\ServiceDevis.cs" />
     <Compile Include="Service\ServiceFamille.cs" />
     <Compile Include="Service\ServiceProduit.cs" />
     <Compile Include="Service\ServiceSousProduit.cs" />
@@ -160,6 +162,9 @@
     </Compile>
     <Compile Include="View\Client\ListeClient.xaml.cs">
       <DependentUpon>ListeClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Devis\ListeDevis.xaml.cs">
+      <DependentUpon>ListeDevis.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Famille\FicheFamille.xaml.cs">
       <DependentUpon>FicheFamille.xaml</DependentUpon>
@@ -195,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Client\ListeClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Devis\ListeDevis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
