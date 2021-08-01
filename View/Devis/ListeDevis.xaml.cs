@@ -38,11 +38,16 @@ namespace GestionDevisTraiteurWPF.View.Devis
 
 		}
 
-		internal void ChargeTab()
+		public void ChargeTab()
 		{
 			List<DevisDto> devisDtos = ServiceDevis.GetAll();
 
 			Clients.ItemsSource = devisDtos;
+		}
+
+		private void Row_DoubleClickDevis(object sender, MouseButtonEventArgs e)
+		{
+
 		}
 	}
 }
