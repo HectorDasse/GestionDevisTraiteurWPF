@@ -163,6 +163,9 @@
     <Compile Include="View\Client\ListeClient.xaml.cs">
       <DependentUpon>ListeClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Devis\FicheDevis.xaml.cs">
+      <DependentUpon>FicheDevis.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Devis\ListeDevis.xaml.cs">
       <DependentUpon>ListeDevis.xaml</DependentUpon>
     </Compile>
@@ -200,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Client\ListeClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Devis\FicheDevis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

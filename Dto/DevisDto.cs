@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GestionDevisTraiteurWPF.Dto
 {
-	class DevisDto : EntityDto
+	public class DevisDto : EntityDto
 	{
 
 		public string nom { get; set; }

@@ -30,7 +30,9 @@ namespace GestionDevisTraiteurWPF.View.Devis
 
 		private void NewDevis(object sender, RoutedEventArgs e)
 		{
-
+			FicheDevis fenetre = new FicheDevis(new DevisDto());
+			fenetre.Owner = this;
+			fenetre.Show();
 		}
 
 		private void SupprimerDevis(object sender, RoutedEventArgs e)
@@ -48,6 +50,12 @@ namespace GestionDevisTraiteurWPF.View.Devis
 		private void Row_DoubleClickDevis(object sender, MouseButtonEventArgs e)
 		{
 
+		}
+
+		private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			MainWindow fenetre = new MainWindow();
+			fenetre.Show();
 		}
 	}
 }

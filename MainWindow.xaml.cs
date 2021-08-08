@@ -4,6 +4,7 @@ using GestionDevisTraiteurWPF.Dto;
 using GestionDevisTraiteurWPF.Entity;
 using GestionDevisTraiteurWPF.View;
 using GestionDevisTraiteurWPF.View.Client;
+using GestionDevisTraiteurWPF.View.Devis;
 using GestionDevisTraiteurWPF.View.Famille;
 using GestionDevisTraiteurWPF.View.Produit;
 using System;
@@ -77,6 +78,13 @@ namespace GestionDevisTraiteurWPF
 				errors = process.StandardError.ReadToEnd();
 				results = process.StandardOutput.ReadToEnd();
 			}
+		}
+
+		private void ListeDevis(object sender, RoutedEventArgs e)
+		{
+			ListeDevis fenetre = new ListeDevis();
+			fenetre.Show();
+			this.Close();
 		}
 	}
 }
